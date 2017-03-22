@@ -1,0 +1,114 @@
+\documentclass[paper=a4, fontsize=11pt]{scrartcl}
+\usepackage[T1]{fontenc}
+\usepackage{fourier}
+
+\usepackage[english]{babel}															% English language/hyphenation
+\usepackage[protrusion=true,expansion=true]{microtype}	
+\usepackage{amsmath,amsfonts,amsthm} % Math packages
+\usepackage[pdftex]{graphicx}	
+\usepackage{url}
+\usepackage{listings}
+
+%%% Custom sectioning
+\usepackage{sectsty}
+\allsectionsfont{\centering \normalfont\scshape}
+
+
+%%% Custom headers/footers (fancyhdr package)
+\usepackage{fancyhdr}
+\pagestyle{fancyplain}
+\fancyhead{}											% No page header
+\fancyfoot[L]{}											% Empty 
+\fancyfoot[C]{}											% Empty
+\fancyfoot[R]{\thepage}									% Pagenumbering
+\renewcommand{\headrulewidth}{0pt}			% Remove header underlines
+\renewcommand{\footrulewidth}{0pt}				% Remove footer underlines
+\setlength{\headheight}{13.6pt}
+
+
+%%% Equation and float numbering
+\numberwithin{equation}{section}		% Equationnumbering: section.eq#
+\numberwithin{figure}{section}			% Figurenumbering: section.fig#
+\numberwithin{table}{section}				% Tablenumbering: section.tab#
+
+
+%%% Maketitle metadata
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}} 	% Horizontal rule
+
+\title{
+		%\vspace{-1in} 	
+		\usefont{OT1}{bch}{b}{n}
+		\normalfont \normalsize \textsc{University of Science and Technology of Hanoi} \\ [25pt]
+		\horrule{0.5pt} \\[0.4cm]
+		\huge Report of labwork 02: gethostbyname \\
+		\horrule{2pt} \\[0.5cm]
+}
+\author{
+		\normalfont 								\normalsize
+        Loc Thi Thuy Linh\\[-3pt]		\normalsize
+        \today
+}
+\date{}
+
+
+%%% Begin document
+\begin{document}
+\maketitle
+\section{Deploy the C Program to VPS}
+
+\begin{itemize}
+ \item Copy c file from computer to the VPS:
+ \begin{lstlisting}
+ 	[root@linh network2017]# scp 2.practical.work.gethostbyname.c linh@vp4.sontg.net:~/
+ \end{lstlisting}
+ \item Response: 
+ \begin{lstlisting}
+	The authenticity of host 'vp4.sontg.net (104.167.107.160)' can't be established.
+	RSA key fingerprint is 14:cc:07:19:33:d7:da:af:d8:67:89:19:a6:40:1b:cd.
+	Are you sure you want to continue connecting (yes/no)? yes
+	Warning: Permanently added 'vp4.sontg.net,104.167.107.160' (RSA) to the list of known hosts.
+	linh@vp4.sontg.net's password: 
+	2.practical.work.gethostbyname.c              100%  818     0.8KB/s   00:00 
+\end{lstlisting}
+
+\item Running the command "gcc 2.practical.work.gethostbyname.c -o gethostbyname" on the VPS.
+\item Running "./gethostbyname google.com" command. The result is
+\begin{lstlisting}
+	ip address: 216.58.192.206
+\end{lstlisting}
+\item Running "./gethostbyname dantri.vn" command. The result is
+\begin{lstlisting}
+	ip address: 222.255.27.51
+\end{lstlisting}
+\end{itemize}
+
+\section{Deploy C program on my computer}
+\begin{itemize}
+ \item The command "./gethostbyname google.com" got the result:
+ \begin{lstlisting}
+	ip address: 42.112.9.216
+	ip address: 42.112.9.238
+	ip address: 42.112.9.224
+	ip address: 42.112.9.230
+	ip address: 42.112.9.245
+	ip address: 42.112.9.244
+	ip address: 42.112.9.251
+	ip address: 42.112.9.217
+	ip address: 42.112.9.231
+	ip address: 42.112.9.237
+	ip address: 42.112.9.223
+	ip address: 42.112.9.210
+\end{lstlisting}
+ 
+ \item The command "./gethostbyname google.com" got the result:
+ \begin{lstlisting}
+ 	ip address: 222.255.27.51
+\end{lstlisting}
+\end{itemize}
+
+\section{Compare and explain the results}
+\begin{itemize}
+ \item In my computer, google.com DNS have more IP address than one in the VPS.
+\end{itemize}
+%%% End document
+\end{document}
