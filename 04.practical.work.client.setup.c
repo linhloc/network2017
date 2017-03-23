@@ -49,7 +49,7 @@ int main(int argc, char *argv[]){
 	if (connect(sockfd, (struct sockaddr *) &saddr, sizeof(saddr)) < 0) {
 		printf("Cannot connect \n");
 	}else{
-		printf("Connect succesfully\n");
+		printf("Connect successfully\n");
 	}
 	return 0;
 
