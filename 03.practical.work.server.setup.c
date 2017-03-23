@@ -11,7 +11,7 @@ int main(int argc, char *argv[]){
 	struct sockaddr_in saddr, caddr;
 	unsigned short port = 8784;
 	
-	if (sockfd=socket(AF_INET, SOCK_STREAM, 0) < 0) {
+	if ((sockfd=socket(AF_INET, SOCK_STREAM, 0)) < 0) {
 		printf("Error creating socket \n");
 		
 	}
@@ -26,6 +26,7 @@ int main(int argc, char *argv[]){
 	}
 	if (listen(sockfd, 5) < 0) {
 		printf("Error listening \n");
+		
 		
 	}
 	
